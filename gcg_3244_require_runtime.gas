@@ -1,0 +1,55 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'ERM
+'QUOTE 2937
+'Hook 11300 pre-save
+
+F.Intrinsic.Control.If(V.Caller.Hook,=,11300)
+	F.Intrinsic.Control.CallSub(Msgbox)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.End
+
+Program.Sub.Main.End
+
+Program.Sub.Msgbox.Start
+V.Local.sMsgbox.Declare(String)
+V.Local.bFlag.Declare(Boolean)
+V.Local.bFlag.Set(False)
+
+'F.Intrinsic.Debug.InvokeDebugger
+'F.Intrinsic.Debug.Stop
+
+'setup time 000116
+'runtime 000118
+F.Intrinsic.Control.If(V.Passed.000204,=,"Labor")
+	F.Intrinsic.Control.If(V.Passed.000118.Trim,=,".0000")
+		F.Intrinsic.Control.AndIf(V.Passed.000116.Trim,=,".0000")
+			F.Intrinsic.UI.Msgbox("Please enter a Runtime.","Error Saving")
+			V.Passed.777777.Set(1)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.If(V.Passed.000118.Trim,=,".0000")
+			F.Intrinsic.Control.AndIf(V.Passed.000116.Trim,<>,".0000")
+			V.Passed.777777.Set(0)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+
+
+
+
+Program.Sub.Msgbox.End
+
+Program.Sub.Comments.Start
+${$0$}$$}$ERIC$}$1/17/2012
+Program.Sub.Comments.End
+
